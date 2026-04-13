@@ -148,6 +148,240 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://carbohydrate1001.github.io/2026/04/13/Git%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C%EF%BC%9A%E5%A6%82%E4%BD%95%E8%A7%84%E8%8C%83%E6%8B%89%E5%8F%96%E3%80%81%E6%9B%B4%E6%96%B0%E5%92%8C%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Centauri_c">
+      <meta itemprop="description" content="Feel free to tour around, toasting marshmallows together is extremely recommended!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carbohyrate's Space">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/04/13/Git%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C%EF%BC%9A%E5%A6%82%E4%BD%95%E8%A7%84%E8%8C%83%E6%8B%89%E5%8F%96%E3%80%81%E6%9B%B4%E6%96%B0%E5%92%8C%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2026-04-13 18:01:27 / Modified: 18:01:29" itemprop="dateCreated datePublished" datetime="2026-04-13T18:01:27+08:00">2026-04-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h2 id="title-Git多人协作：如何规范拉取、更新和合并操作date-2026-04-13-18-01-27tags-Git-Branch-Controlcategories-Technical-Mannual"><a href="#title-Git多人协作：如何规范拉取、更新和合并操作date-2026-04-13-18-01-27tags-Git-Branch-Controlcategories-Technical-Mannual" class="headerlink" title="title: Git多人协作：如何规范拉取、更新和合并操作date: 2026-04-13 18:01:27tags:  - Git Branch Controlcategories:  - Technical Mannual"></a>title: Git多人协作：如何规范拉取、更新和合并操作<br>date: 2026-04-13 18:01:27<br>tags:<br>  - Git Branch Control<br>categories:<br>  - Technical Mannual</h2><h1 id="Git多人协作：如何规范拉取、更新和合并操作"><a href="#Git多人协作：如何规范拉取、更新和合并操作" class="headerlink" title="Git多人协作：如何规范拉取、更新和合并操作"></a>Git多人协作：如何规范拉取、更新和合并操作</h1><p>Git作为软件开发中最常用的工具，在团队协作中尤为重要。无论是大型项目还是小型团队，规范的Git操作不仅能帮助我们保持代码的稳定性，还能避免因操作不当导致的代码冲突、历史污染等问题。在这篇文章中，我将分享一些关于Git拉取（pull）、更新（update）和合并（merge）的实用技巧，帮助团队在日常开发中避免常见陷阱，保持高效协作。</p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>在多人协作中，代码覆盖、冲突失控和错误合并等问题时有发生。为了减少这些问题，我们需要在拉取、更新、合并这三项基本操作中形成统一的规范。这样不仅能提高工作效率，还能在发生问题时快速定位和解决。</p>
+<p>本文的操作原则适用于基于Git的团队协作环境，假设主分支是 <code>main</code>。</p>
+<h2 id="1-基本原则"><a href="#1-基本原则" class="headerlink" title="1. 基本原则"></a>1. 基本原则</h2><h3 id="1-1-分支管理"><a href="#1-1-分支管理" class="headerlink" title="1.1 分支管理"></a>1.1 分支管理</h3><p>团队开发时，分支管理是协作的基石。为了确保开发过程有序，以下几点需要特别注意：</p>
+<ul>
+<li><p><strong><code>main</code> 分支是受保护的</strong>，原则上不能直接提交。</p>
+</li>
+<li><p>每个开发者都应该从 <code>main</code> 分支拉取最新代码，然后在个人功能分支上进行开发。</p>
+</li>
+<li><p>所有功能开发和缺陷修复都应该通过 <strong>Pull Request（PR）&#x2F; Merge Request（MR）</strong> 的方式合并，而不是直接推送到 <code>main</code>。</p>
+</li>
+<li><p>任何没有经过代码审查的提交，**都不允许直接合并到 <code>main</code>**。</p>
+</li>
+</ul>
+<h3 id="1-2-提交规范"><a href="#1-2-提交规范" class="headerlink" title="1.2 提交规范"></a>1.2 提交规范</h3><p>提交是团队开发中不可或缺的一部分，以下是一些保证提交质量的规范：</p>
+<ul>
+<li><p>提交应该<strong>小步提交、可回溯且语义清晰</strong>。</p>
+</li>
+<li><p><strong>不要将多个不相关的修改混在一起</strong>。每次提交应该关注单一功能或修复。</p>
+</li>
+<li><p>提交前务必确保：</p>
+<ul>
+<li><p>代码可编译、可运行。</p>
+</li>
+<li><p>本地测试已通过。</p>
+</li>
+<li><p>不要提交调试代码、临时日志或敏感信息。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-同步原则"><a href="#1-3-同步原则" class="headerlink" title="1.3 同步原则"></a>1.3 同步原则</h3><p>为了避免冲突，开发过程中要定期同步主分支的最新代码。确保开发人员始终在最新版本的代码上进行工作，减少合并时的冲突。</p>
+<ul>
+<li><p><strong>开发前同步远程代码</strong>，确保代码是最新的。</p>
+</li>
+<li><p>**开发过程中定期同步 <code>main</code>**，以减少冲突规模。</p>
+</li>
+<li><p>合并前再次同步并解决冲突，确保功能正常。</p>
+</li>
+</ul>
+<h3 id="1-4-历史管理"><a href="#1-4-历史管理" class="headerlink" title="1.4 历史管理"></a>1.4 历史管理</h3><p>Git的强大不仅在于它支持多分支并行开发，还在于它能管理历史记录。但是，错误的历史操作可能会对团队造成困扰，因此有几点历史管理原则要遵守：</p>
+<ul>
+<li><p>不要在<strong>公共分支</strong>（特别是 <code>main</code>）上使用 <code>push --force</code>，避免误覆盖他人工作。</p>
+</li>
+<li><p>如果已经推送的提交被其他人依赖，<strong>不要使用 <code>reset</code> 修改历史</strong>，推荐使用 <code>revert</code>。</p>
+</li>
+<li><p>本地分支在确保没有其他人依赖的情况下，可以使用 <code>rebase</code> 来整理历史。</p>
+</li>
+</ul>
+<h2 id="2-拉取、更新与合并：常见术语"><a href="#2-拉取、更新与合并：常见术语" class="headerlink" title="2. 拉取、更新与合并：常见术语"></a>2. 拉取、更新与合并：常见术语</h2><p>在开始之前，我们需要了解一些基本术语，以便于理解后面的操作。</p>
+<ul>
+<li><p><strong>pull</strong>： <code>git pull</code> 是将远程代码拉取到本地，并且合并的过程。它实际上等价于 <code>git fetch</code> + <code>git merge</code>（或者在某些配置下，<code>git fetch</code> + <code>git rebase</code>）。</p>
+</li>
+<li><p><strong>update</strong>：这个操作是指将本地分支与远程分支同步，通常分为 <code>git fetch</code> + <code>git rebase</code> 或 <code>git merge</code>。</p>
+</li>
+<li><p><strong>merge</strong>：合并操作是将一个分支的修改合并到另一个分支，常见的操作场景是将个人分支合并到 <code>main</code>。</p>
+</li>
+</ul>
+<h2 id="3-推荐的协作工作流"><a href="#3-推荐的协作工作流" class="headerlink" title="3. 推荐的协作工作流"></a>3. 推荐的协作工作流</h2><h3 id="3-1-场景一：开始一个新需求"><a href="#3-1-场景一：开始一个新需求" class="headerlink" title="3.1 场景一：开始一个新需求"></a>3.1 场景一：开始一个新需求</h3><p>每次开始新需求时，确保自己在 <code>main</code> 上有最新的代码，这是个好习惯。操作步骤如下：</p>
+<ol>
+<li>切换到 <code>main</code> 并拉取最新代码：</li>
+</ol>
+<pre><code class="bash">
+git checkout main
+
+git pull origin main
+</code></pre>
+<ol start="2">
+<li>基于最新的<code>main</code>创建功能分支：</li>
+</ol>
+<pre><code class="bash">
+git checkout -b feature/xxx
+</code></pre>
+<ol start="3">
+<li>开发并提交更改：</li>
+</ol>
+<pre><code class="bash">
+git add .
+
+git commit -m &quot;feat: 完成 xxx 功能&quot;
+</code></pre>
+<ol start="4">
+<li>推送分支到远程：</li>
+</ol>
+<pre><code class="bash">
+git push -u origin feature/xxx
+</code></pre>
+<ol start="5">
+<li>提交 Pull Request（PR）或 Merge Request（MR），等待评审并合并。</li>
+</ol>
+<h3 id="3-2-场景二：开发过程中同步-main-分支最新代码"><a href="#3-2-场景二：开发过程中同步-main-分支最新代码" class="headerlink" title="3.2 场景二：开发过程中同步 main 分支最新代码"></a>3.2 场景二：开发过程中同步 <code>main</code> 分支最新代码</h3><p>推荐使用 <code>rebase</code>，可以保持提交历史清晰。操作如下：</p>
+<pre><code class="bash">
+git checkout feature/xxx
+
+git fetch origin
+
+git rebase origin/main
+</code></pre>
+<p>如果团队不使用 <code>rebase</code>，也可以使用 <code>merge</code>：</p>
+<pre><code class="bash">
+git checkout feature/xxx
+
+git fetch origin
+
+git merge origin/main
+</code></pre>
+<p>注意： 确保团队的成员对使用 <code>rebase</code> 或 <code>merge</code> 一致同意，避免混乱。</p>
+<h3 id="3-3-场景二：开发过程中同步-main-分支最新代码"><a href="#3-3-场景二：开发过程中同步-main-分支最新代码" class="headerlink" title="3.3 场景二：开发过程中同步 main 分支最新代码"></a>3.3 场景二：开发过程中同步 <code>main</code> 分支最新代码</h3><ol>
+<li><p>确保功能分支已同步到 <code>main</code> 的最新版本。</p>
+</li>
+<li><p>本地解决任何冲突，并确认功能正常。</p>
+</li>
+<li><p>提交 Pull Request（PR）或 Merge Request（MR）。</p>
+</li>
+<li><p>等待代码审查并合并。</p>
+</li>
+<li><p>合并后删除已完成的功能分支。</p>
+</li>
+</ol>
+<h2 id="4-常见问题与应急处理"><a href="#4-常见问题与应急处理" class="headerlink" title="4. 常见问题与应急处理"></a>4. 常见问题与应急处理</h2><h3 id="4-1-Pull-时提示本地有未提交修改"><a href="#4-1-Pull-时提示本地有未提交修改" class="headerlink" title="4.1 Pull 时提示本地有未提交修改"></a>4.1 Pull 时提示本地有未提交修改</h3><p>如果在执行 <code>git pull</code> 时提示本地有未提交的修改，需要先处理这些修改。你可以选择提交这些修改，或者暂存它们：</p>
+<pre><code class="bash">
+git add .
+
+git commit -m &quot;保存本地修改&quot;
+</code></pre>
+<p>或者使用 <code>stash</code> 暂存当前修改：</p>
+<pre><code class="bash">
+git stash
+
+git pull origin main
+
+git stash pop
+</code></pre>
+<h3 id="4-2-Merge-或-Rebase-发生冲突"><a href="#4-2-Merge-或-Rebase-发生冲突" class="headerlink" title="4.2 Merge 或 Rebase 发生冲突"></a>4.2 Merge 或 Rebase 发生冲突</h3><p>如果在合并时发生了冲突，处理方法如下：</p>
+<ol>
+<li>查看冲突文件：</li>
+</ol>
+<pre><code class="bash">
+git status
+</code></pre>
+<ol start="2">
+<li>打开冲突文件并根据需求解决冲突：</li>
+</ol>
+<pre><code class="bash">
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+本地代码
+
+=======
+
+远程代码
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main
+</code></pre>
+<ol start="3">
+<li>解决冲突后，标记为已解决：</li>
+</ol>
+<pre><code class="bash">
+git add &lt;冲突文件&gt;
+</code></pre>
+<ol start="4">
+<li>如果是 merge，继续提交：</li>
+</ol>
+<pre><code class="bash">
+git commit
+</code></pre>
+<p>如果是 rebase，继续执行：</p>
+<pre><code class="bash">
+git rebase --continue
+</code></pre>
+<h2 id="5-紧急回滚与恢复"><a href="#5-紧急回滚与恢复" class="headerlink" title="5. 紧急回滚与恢复"></a>5. 紧急回滚与恢复</h2><p>在多人协作时，回滚操作时常发生，尤其是在意外提交错误的情况下。以下是一些常见的回滚操作方式。</p>
+<h3 id="5-1-回滚优先级"><a href="#5-1-回滚优先级" class="headerlink" title="5.1 回滚优先级"></a>5.1 回滚优先级</h3><p>优先使用 <code>revert</code>，避免 <code>reset</code>。</p>
+<p>优先保留历史记录，不修改历史。</p>
+<p>优先局部回滚，不重置整个分支。</p>
+<p>如果操作失误，使用 <code>revert</code> 来撤销已经推送的提交，而不是使用 <code>reset</code> 来修改历史。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://carbohydrate1001.github.io/2026/03/04/%E8%AE%B0%E5%BF%86%E5%9B%BE%E8%B0%B1-%E2%80%94-%E6%8A%80%E6%9C%AF%E6%89%8B%E5%86%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1837,7 +2071,7 @@ models:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-03-04 10:53:58" itemprop="dateModified" datetime="2026-03-04T10:53:58+08:00">2026-03-04</time>
+                <time title="Modified: 2026-03-24 11:44:56" itemprop="dateModified" datetime="2026-03-24T11:44:56+08:00">2026-03-24</time>
               </span>
 
           
@@ -2082,7 +2316,7 @@ models:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-03-04 10:53:58" itemprop="dateModified" datetime="2026-03-04T10:53:58+08:00">2026-03-04</time>
+                <time title="Modified: 2026-03-24 11:44:56" itemprop="dateModified" datetime="2026-03-24T11:44:56+08:00">2026-03-24</time>
               </span>
 
           
@@ -2177,7 +2411,7 @@ models:
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
